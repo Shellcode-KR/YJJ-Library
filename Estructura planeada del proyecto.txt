@@ -1,0 +1,39 @@
+biblioteca-universitaria/
+├── src/
+│   ├── model/
+│   │   ├── entities/
+│   │   │   ├── Usuario.java
+│   │   │   ├── Libro.java
+│   │   │   ├── Prestamo.java
+│   │   │   └── Reserva.java
+│   │   ├── dao/
+│   │   │   ├── ConexionBD.java
+│   │   │   ├── UsuarioDAO.java
+│   │   │   ├── LibroDAO.java
+│   │   │   └── PrestamoDAO.java
+│   │   └── services/
+│   │       ├── LoginService.java
+│   │       ├── PrestamoService.java
+│   │       └── ReporteService.java
+│   ├── controller/
+│   │   ├── LoginController.java
+│   │   ├── LibroController.java
+│   │   └── PrestamoController.java
+│   ├── view/
+│   │   ├── LoginView.java
+│   │   ├── DashboardView.java
+│   │   └── LibrosView.java
+│   ├── utils/
+│   │   ├── HashUtils.java
+│   │   └── SessionManager.java
+│   └── Main.java
+└── resources/
+    └── config.properties
+
+
+RESUMEN DE LA ARQUITECTURA COMPLETA
+
+Swing (Vista) → Controladores (Java) → DAO (MySQL JDBC)
+        ↑              ↓                   ↓
+    Eventos UI     Lógica / Validación     Sentencias SQL
+
