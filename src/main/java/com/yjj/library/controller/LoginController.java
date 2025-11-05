@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * LoginController - maneja el evento de login entre la view y el dao.
  */
 public class LoginController {
+    /*
     private LoginView loginView;
     private UsuarioDAO usuarioDAO;
 
@@ -45,5 +46,5 @@ public class LoginController {
             JOptionPane.showMessageDialog(loginView, "Error al verificar credenciales: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-    }
+    }*/
 }

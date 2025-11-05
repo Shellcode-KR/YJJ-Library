@@ -1,6 +1,5 @@
 package com.yjj.library.model.entities;
 
-
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,35 +15,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Usuario {
+public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Integer idUsuario;
-
-    @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false)
-    private Rol rol;
+    @Column(name = "id_rol")
+    private Integer idRol;
 
     private String nombre;
-    private String username;
-
-    @Column(name = "password_hash")
-    private String passwordHash;
-
-    private String correo;
-    private String telefono;
-    private String matricula;
-    private String estado;
-
-    @Column(name = "fecha_registro")
-    private LocalDateTime fechaRegistro;
-
-    @Column(name = "ultima_conexion")
-    private LocalDateTime ultimaConexion;
+    private String descripcion;
 }

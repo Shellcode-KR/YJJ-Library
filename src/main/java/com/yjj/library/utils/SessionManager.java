@@ -6,7 +6,7 @@ import com.yjj.library.model.entities.Usuario;
  * SessionManager - guarda el usuario actual en memoria durante la ejecución.
  */
 public class SessionManager {
-    private static Usuario usuarioActual;
+   /* private static Usuario usuarioActual;
 
     public static void iniciarSesion(Usuario u) {
         usuarioActual = u;
@@ -26,5 +26,5 @@ public class SessionManager {
 
     public static void cerrarSesion() {
         usuarioActual = null;
-    }
+    }*/
 }

@@ -1,14 +1,17 @@
 package com.yjj.library.model.entities;
 
-
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,35 +19,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "categorias")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Usuario {
+public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Integer idUsuario;
+    @Column(name = "id_categoria")
+    private Integer idCategoria;
 
-    @ManyToOne
-    @JoinColumn(name = "id_rol", nullable = false)
-    private Rol rol;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_padre")
+    private Categoria padre;
 
+    @Column(nullable = false, unique = true)
     private String nombre;
-    private String username;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
+    private String descripcion;
 
-    private String correo;
-    private String telefono;
-    private String matricula;
-    private String estado;
+    @OneToMany(mappedBy = "padre")
+    private List<Categoria> subcategorias;
 
-    @Column(name = "fecha_registro")
-    private LocalDateTime fechaRegistro;
-
-    @Column(name = "ultima_conexion")
-    private LocalDateTime ultimaConexion;
+    @ManyToMany(mappedBy = "categorias")
+    private List<Libro> libros;
 }

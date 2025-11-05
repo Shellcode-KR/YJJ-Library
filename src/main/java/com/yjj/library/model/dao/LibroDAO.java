@@ -1,49 +1,58 @@
 package com.yjj.library.model.dao;
 
 import com.yjj.library.model.entities.Libro;
-import java.sql.*;
-import java.util.ArrayList;
+import com.yjj.library.utils.JpaUtil;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
-public class LibroDAO {
 
-    public List<Libro> listarTodos() throws SQLException {
-        List<Libro> lista = new ArrayList<>();
-        String sql = "SELECT id_libro, titulo, anio_publicacion, isbn, ubicacion, estado FROM libros";
-        try (Connection conn = ConexionBD.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            while (rs.next()) {
-                Libro l = new Libro();
-                l.setIdLibro(rs.getInt("id_libro"));
-                l.setTitulo(rs.getString("titulo"));
-                l.setAnioPublicacion(rs.getInt("anio_publicacion"));
-                l.setIsbn(rs.getString("isbn"));
-                l.setUbicacion(rs.getString("ubicacion"));
-                l.setEstado(rs.getString("estado"));
-                lista.add(l);
-            }
-        }
-        return lista;
+
+public class LibroDAO extends BaseDAO<Libro> {
+
+    public LibroDAO() {
+        super(Libro.class);
     }
 
-    public void insertar(Libro libro) throws SQLException {
-        String sql = "INSERT INTO libros (titulo, anio_publicacion, isbn, id_editorial, ubicacion, estado) VALUES (?, ?, ?, NULL, ?, ?)";
-        try (Connection conn = ConexionBD.getConexion();
-             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, libro.getTitulo());
-            ps.setInt(2, libro.getAnioPublicacion());
-            ps.setString(3, libro.getIsbn());
-            ps.setString(4, libro.getUbicacion());
-            ps.setString(5, libro.getEstado());
-            ps.executeUpdate();
-            try (ResultSet keys = ps.getGeneratedKeys()) {
-                if (keys.next()) {
-                    libro.setIdLibro(keys.getInt(1));
-                }
-            }
+    public List<Libro> buscarPorTitulo(String titulo) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            TypedQuery<Libro> q = em.createQuery(
+                "SELECT l FROM Libro l WHERE LOWER(l.titulo) LIKE LOWER(:titulo)",
+                Libro.class
+            );
+            q.setParameter("titulo", "%" + titulo + "%");
+            return q.getResultList();
+        } finally {
+            em.close();
         }
     }
 
-    // editar, eliminar, buscarPorTitulo... implementar similar
+    public List<Libro> buscarPorAutor(String nombreAutor) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            TypedQuery<Libro> q = em.createQuery(
+                "SELECT l FROM Libro l JOIN l.autores a WHERE LOWER(a.nombre) LIKE LOWER(:nombre)",
+                Libro.class
+            );
+            q.setParameter("nombre", "%" + nombreAutor + "%");
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Libro> buscarPorCategoria(String nombreCategoria) {
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            TypedQuery<Libro> q = em.createQuery(
+                "SELECT l FROM Libro l JOIN l.categorias c WHERE LOWER(c.nombre) LIKE LOWER(:nombre)",
+                Libro.class
+            );
+            q.setParameter("nombre", "%" + nombreCategoria + "%");
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 }

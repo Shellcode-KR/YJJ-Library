@@ -1,24 +1,70 @@
 package com.yjj.library.model.entities;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "libros")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Libro {
-    private int idLibro;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_libro")
+    private Integer idLibro;
+
     private String titulo;
-    private int anioPublicacion;
+
+    @Column(name = "anio_publicacion")
+    private Integer anioPublicacion;
+
     private String isbn;
+
+    @ManyToOne
+    @JoinColumn(name = "id_editorial")
+    private Editorial editorial;
+
     private String ubicacion;
     private String estado;
 
-    // getters y setters
-    public int getIdLibro() { return idLibro; }
-    public void setIdLibro(int idLibro) { this.idLibro = idLibro; }
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
-    public int getAnioPublicacion() { return anioPublicacion; }
-    public void setAnioPublicacion(int anioPublicacion) { this.anioPublicacion = anioPublicacion; }
-    public String getIsbn() { return isbn; }
-    public void setIsbn(String isbn) { this.isbn = isbn; }
-    public String getUbicacion() { return ubicacion; }
-    public void setUbicacion(String ubicacion) { this.ubicacion = ubicacion; }
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
+    @Column(name = "fecha_alta")
+    private LocalDateTime fechaAlta;
+
+    @ManyToMany
+    @JoinTable(
+            name = "libro_autor",
+            joinColumns = @JoinColumn(name = "id_libro"),
+            inverseJoinColumns = @JoinColumn(name = "id_autor")
+    )
+    private List<Autor> autores;
+
+    @ManyToMany
+    @JoinTable(
+            name = "libro_categoria",
+            joinColumns = @JoinColumn(name = "id_libro"),
+            inverseJoinColumns = @JoinColumn(name = "id_categoria")
+    )
+    private List<Categoria> categorias;
+
+    @OneToMany(mappedBy = "libro")
+    private List<Ejemplar> ejemplares;
+
 }

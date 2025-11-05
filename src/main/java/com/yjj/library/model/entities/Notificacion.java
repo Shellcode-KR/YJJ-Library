@@ -1,9 +1,9 @@
 package com.yjj.library.model.entities;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,34 +16,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "prestamos")
+@Table(name = "notificaciones")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Prestamo {
+public class Notificacion {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_prestamo")
-    private Integer idPrestamo;
+    @Column(name = "id_notificacion")
+    private Integer idNotificacion;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ejemplar", nullable = false)
-    private Ejemplar ejemplar;
+    @Column(nullable = false)
+    private String tipo; // AVISO, MULTA, VENCIMIENTO, SISTEMA
 
-    @Column(name = "fecha_prestamo")
-    private LocalDateTime fechaPrestamo;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String mensaje;
 
-    @Column(name = "fecha_devolucion")
-    private LocalDateTime fechaDevolucion;
+    @Column(name = "fecha_envio", nullable = false)
+    private LocalDateTime fechaEnvio;
 
-    @Column(name = "fecha_entrega")
-    private LocalDateTime fechaEntrega;
-
-    private BigDecimal multa;
-    private String estado;
+    @Column(nullable = false)
+    private Boolean leido;
 }

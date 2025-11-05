@@ -9,6 +9,7 @@ import java.awt.*;
  * LoginView - pequeña ventana de login que invoca al LoginController.
  */
 public class LoginView extends JFrame {
+    /*
     private JTextField txtUsuario;
     private JPasswordField txtContrasena;
     private JButton btnIngresar;
@@ -70,4 +71,5 @@ public class LoginView extends JFrame {
             controller.verificarCredenciales(u, p);
         });
     }
+*/
 }
