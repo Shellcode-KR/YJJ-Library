@@ -1,4 +1,4 @@
-package model.entities;
+package com.yjj.library.model.entities;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

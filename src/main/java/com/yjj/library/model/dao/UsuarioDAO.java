@@ -1,4 +1,4 @@
-package model.dao;
+package com.yjj.library.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import model.entities.Usuario;
+import com.yjj.library.model.entities.Usuario;
 
 /**
  * DAO encargado de la gestión de la tabla de usuarios.
