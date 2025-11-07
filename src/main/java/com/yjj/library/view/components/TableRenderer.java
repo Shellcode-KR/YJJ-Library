@@ -43,9 +43,10 @@ public class TableRenderer extends DefaultTableCellRenderer {
             panel.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
 
             JLabel editIcon = new JLabel(new FlatSVGIcon("icons/edit.svg", 16, 16));
+            
             editIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            JLabel deleteIcon = new JLabel(new FlatSVGIcon("icons/delete.svg", 16, 16));
+            JLabel deleteIcon = new JLabel(new FlatSVGIcon("icons/trash.svg", 16, 16));
             deleteIcon.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
             panel.add(editIcon);

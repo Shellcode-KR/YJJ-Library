@@ -17,6 +17,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import views.PrestamosView;
+import views.ReportesView;
 
 /**
  *
@@ -275,18 +277,22 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         // TODO add your handling code here:
+        showPanel(new ReportesView());
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void btnDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionesActionPerformed
         // TODO add your handling code here:
+        showPanel(new DevolucionesView());
     }//GEN-LAST:event_btnDevolucionesActionPerformed
 
     private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
         // TODO add your handling code here:
+        showPanel(new PrestamosView());
     }//GEN-LAST:event_btnPrestamosActionPerformed
 
     private void btnLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosActionPerformed
         // TODO add your handling code here:
+        showPanel(new LibrosView());
     }//GEN-LAST:event_btnLibrosActionPerformed
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
