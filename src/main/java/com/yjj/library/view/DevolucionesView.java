@@ -1,5 +1,6 @@
 package com.yjj.library.view;
 
+import com.yjj.library.view.components.TableEditorDevoluciones;
 import com.yjj.library.view.components.TableRendererDevoluciones;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -93,8 +94,8 @@ public class DevolucionesView extends JPanel {
         // ==================== TABLA ====================
         String[] columnas = {"Usuario", "Libro", "Fecha Préstamo", "Fecha Esperada", "Multa", "Estado", "Acciones"};
         Object[][] datos = {
-                {"Dr. Roberto Martínez\nP000123", "Química Orgánica\n978-0-07-338887-1", "09/10/2025", "23/10/2025", "$4.00", "Vencido", ""},
-                {"María González Pérez\nU001234", "Cálculo Diferencial e Integral\n978-0-13-468599-1", "12/10/2025", "26/10/2025", "$0.00", "Activo", ""}
+            {"Dr. Roberto Martínez\nP000123", "Química Orgánica\n978-0-07-338887-1", "09/10/2025", "23/10/2025", "$4.00", "Vencido", ""},
+            {"María González Pérez\nU001234", "Cálculo Diferencial e Integral\n978-0-13-468599-1", "12/10/2025", "26/10/2025", "$0.00", "Activo", ""}
         };
 
         DefaultTableModel model = new DefaultTableModel(datos, columnas) {
@@ -113,9 +114,11 @@ public class DevolucionesView extends JPanel {
         tablaDevoluciones.setShowGrid(false);
 
         // Render personalizado
+        
         tablaDevoluciones.getColumnModel().getColumn(4).setCellRenderer(new TableRendererDevoluciones()); // Multa
         tablaDevoluciones.getColumnModel().getColumn(5).setCellRenderer(new TableRendererDevoluciones()); // Estado
-        tablaDevoluciones.getColumnModel().getColumn(6).setCellRenderer(new TableRendererDevoluciones()); // Acciones
+        tablaDevoluciones.getColumnModel().getColumn(6).setCellRenderer(new TableRendererDevoluciones()); // placeholder
+        tablaDevoluciones.getColumnModel().getColumn(6).setCellEditor(new TableEditorDevoluciones()); // 👈 Editor con botón funcional
 
         JScrollPane scroll = new JScrollPane(tablaDevoluciones);
         scroll.setBorder(BorderFactory.createCompoundBorder(

@@ -18,12 +18,12 @@ public class TableRendererDevoluciones extends DefaultTableCellRenderer {
         JMenuItem registrarConMulta = new JMenuItem("Registrar con multa");
         JMenuItem cancelar = new JMenuItem("Cancelar");
 
-        registrarSinMulta.addActionListener(e ->
-                JOptionPane.showMessageDialog(null, "Devolución registrada sin multa"));
-        registrarConMulta.addActionListener(e ->
-                JOptionPane.showMessageDialog(null, "Devolución registrada con multa"));
-        cancelar.addActionListener(e ->
-                JOptionPane.showMessageDialog(null, "Acción cancelada"));
+        registrarSinMulta.addActionListener(e
+                -> JOptionPane.showMessageDialog(null, "Devolución registrada sin multa"));
+        registrarConMulta.addActionListener(e
+                -> JOptionPane.showMessageDialog(null, "Devolución registrada con multa"));
+        cancelar.addActionListener(e
+                -> JOptionPane.showMessageDialog(null, "Acción cancelada"));
 
         popupMenu.add(registrarSinMulta);
         popupMenu.add(registrarConMulta);
@@ -33,8 +33,8 @@ public class TableRendererDevoluciones extends DefaultTableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value,
-                                                   boolean isSelected, boolean hasFocus,
-                                                   int row, int column) {
+            boolean isSelected, boolean hasFocus,
+            int row, int column) {
 
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         c.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
@@ -63,10 +63,11 @@ public class TableRendererDevoluciones extends DefaultTableCellRenderer {
             chip.setForeground(Color.WHITE);
             chip.setBorder(BorderFactory.createEmptyBorder(3, 10, 3, 10));
 
-            if ("Activo".equalsIgnoreCase(value.toString()))
+            if ("Activo".equalsIgnoreCase(value.toString())) {
                 chip.setBackground(new Color(33, 37, 41));
-            else
+            } else {
                 chip.setBackground(new Color(139, 0, 0));
+            }
 
             p.add(chip);
             return p;
@@ -74,28 +75,7 @@ public class TableRendererDevoluciones extends DefaultTableCellRenderer {
 
         // === Acciones ===
         if (column == 6) {
-            JPanel p = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-            p.setBackground(isSelected ? table.getSelectionBackground() : Color.WHITE);
-
-            JButton btnRegistrar = new JButton("Registrar");
-            btnRegistrar.setFocusPainted(false);
-            btnRegistrar.setFont(new Font("Segoe UI", Font.BOLD, 12));
-            btnRegistrar.setBackground(Color.WHITE);
-            btnRegistrar.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
-            btnRegistrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-            // Evento para abrir el menú emergente
-            btnRegistrar.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mousePressed(MouseEvent e) {
-                    if (SwingUtilities.isLeftMouseButton(e)) {
-                        popupMenu.show(btnRegistrar, e.getX(), e.getY());
-                    }
-                }
-            });
-
-            p.add(btnRegistrar);
-            return p;
+            return new JLabel(); // vacío, el editor lo manejará
         }
 
         return c;
