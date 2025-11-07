@@ -118,7 +118,8 @@ public class DevolucionesView extends JPanel {
         tablaDevoluciones.getColumnModel().getColumn(4).setCellRenderer(new TableRendererDevoluciones()); // Multa
         tablaDevoluciones.getColumnModel().getColumn(5).setCellRenderer(new TableRendererDevoluciones()); // Estado
         tablaDevoluciones.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer()); // 👈 renderiza el botón visible
-        tablaDevoluciones.getColumnModel().getColumn(6).setCellEditor(new TableEditorDevoluciones());   // 👈 maneja el clic
+        tablaDevoluciones.getColumnModel().getColumn(6)
+                .setCellEditor(new TableEditorDevoluciones(tablaDevoluciones));
 
         JScrollPane scroll = new JScrollPane(tablaDevoluciones);
         scroll.setBorder(BorderFactory.createCompoundBorder(
