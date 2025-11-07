@@ -9,6 +9,9 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLigh
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -27,6 +30,7 @@ public class DashBoard extends javax.swing.JFrame {
     public DashBoard() {
         initComponents();
         initStyles();
+        SetDateTitle();
     }
 
     /**
@@ -51,6 +55,7 @@ public class DashBoard extends javax.swing.JFrame {
         header = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         subtitulo = new javax.swing.JLabel();
+        titulofecha = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,6 +212,8 @@ public class DashBoard extends javax.swing.JFrame {
 
         subtitulo.setText("Titulo 1");
 
+        titulofecha.setText("jLabel1");
+
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
@@ -214,15 +221,20 @@ public class DashBoard extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addComponent(subtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(titulofecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(subtitulo)
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subtitulo)
+                    .addComponent(titulofecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -275,29 +287,29 @@ public class DashBoard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnInicioActionPerformed
-
-    private void btnLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLibrosActionPerformed
-
-    private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPrestamosActionPerformed
-
-    private void btnDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolucionesActionPerformed
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportesActionPerformed
 
-    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+    private void btnDevolucionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUsuariosActionPerformed
+    }//GEN-LAST:event_btnDevolucionesActionPerformed
+
+    private void btnPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrestamosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrestamosActionPerformed
+
+    private void btnLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLibrosActionPerformed
+
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +337,7 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel menu;
     private javax.swing.JLabel subtitulo;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulofecha;
     private javax.swing.JLabel titulomenu;
     // End of variables declaration//GEN-END:variables
 
@@ -340,13 +353,13 @@ public class DashBoard extends javax.swing.JFrame {
         btnPrestamos.putClientProperty("FlatLaf.styleClass", "h3");
         btnDevoluciones.putClientProperty("FlatLaf.styleClass", "h3");
         btnReportes.putClientProperty("FlatLaf.styleClass", "h3");
-        configurarBotonMenu(btnInicio, "Inicio", "/libreria-inicio.png");
+        btnUsuarios.putClientProperty("FlatLaf.styleClass", "h3");
+        /*configurarBotonMenu(btnInicio, "Inicio", "/libreria-inicio.png");
         configurarBotonMenu(btnUsuarios, "Usuarios", "/libreria-usuarios.png");
         configurarBotonMenu(btnLibros, "Libros", "/libreria-libros.png");
         configurarBotonMenu(btnPrestamos, "Préstamos", "/libreria-prestamo.png");
         configurarBotonMenu(btnDevoluciones, "Devoluciones", "/libreria-devolucion.png");
-        configurarBotonMenu(btnReportes, "Reportes", "/libreria-reportes.png");
-
+        configurarBotonMenu(btnReportes, "Reportes", "/libreria-reportes.png");/*/
 
     }
 
@@ -355,32 +368,14 @@ public class DashBoard extends javax.swing.JFrame {
         Image imagen = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         return new ImageIcon(imagen);
     }
-private void configurarBotonMenu(JButton boton, String texto, String rutaIcono) {
-    boton.setText(texto);
-    boton.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
-    boton.setForeground(Color.WHITE);
-    boton.setBackground(new Color(43, 77, 153));
-    boton.setBorderPainted(false);
-    boton.setFocusPainted(false);
-    boton.setHorizontalAlignment(SwingConstants.LEFT);
-    boton.setHorizontalTextPosition(SwingConstants.RIGHT);
-    boton.setIconTextGap(15);
-    boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-    // Cargar y escalar el icono
-    ImageIcon icon = new ImageIcon(getClass().getResource(rutaIcono));
-    Image scaled = icon.getImage().getScaledInstance(24, 24, Image.SCALE_SMOOTH);
-    boton.setIcon(new ImageIcon(scaled));
+    private void SetDateTitle() {
+        LocalDate now = LocalDate.now();
+        Locale spanishLocale = new Locale("es", "ES");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale);
+        String fecha = now.format(formatter);
+        titulofecha.setText(Character.toUpperCase(fecha.charAt(0)) + fecha.substring(1));
 
-    // Opcional: efecto hover
-    boton.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            boton.setBackground(new Color(63, 97, 173));
-        }
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            boton.setBackground(new Color(43, 77, 153));
-        }
-    });
-}
+    }
 
 }

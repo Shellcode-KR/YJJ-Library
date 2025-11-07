@@ -308,10 +308,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="subtitulo" min="-2" pref="526" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="subtitulo" min="-2" pref="526" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                              <Component id="titulofecha" min="-2" pref="280" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="titulo" min="-2" pref="554" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="357" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -319,7 +323,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="subtitulo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="subtitulo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="titulofecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="40" max="32767" attributes="0"/>
                       <Component id="titulo" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -336,6 +343,11 @@
             <Component class="javax.swing.JLabel" name="subtitulo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Titulo 1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="titulofecha">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jLabel1"/>
               </Properties>
             </Component>
           </SubComponents>
