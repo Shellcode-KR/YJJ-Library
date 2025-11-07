@@ -7,11 +7,19 @@
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="12345678"/>
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      
+      
+      <!-- Hibernate -->
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+      <!-- 'validate' evita cambios en esquema; usa 'update' sólo en dev -->
       <property name="hibernate.hbm2ddl.auto" value="validate"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
+      <property name="hibernate.use_sql_comments" value="false"/>
+
+      <!-- Configs para performance -->
+      <property name="hibernate.jdbc.batch_size" value="20"/>
+      <property name="hibernate.generate_statistics" value="false"/>
     </properties>
   </persistence-unit>
 </persistence>
