@@ -1,5 +1,6 @@
 package com.yjj.library.view;
 
+import com.yjj.library.view.components.ButtonRenderer;
 import com.yjj.library.view.components.TableEditorDevoluciones;
 import com.yjj.library.view.components.TableRendererDevoluciones;
 import javax.swing.*;
@@ -114,11 +115,10 @@ public class DevolucionesView extends JPanel {
         tablaDevoluciones.setShowGrid(false);
 
         // Render personalizado
-        
         tablaDevoluciones.getColumnModel().getColumn(4).setCellRenderer(new TableRendererDevoluciones()); // Multa
         tablaDevoluciones.getColumnModel().getColumn(5).setCellRenderer(new TableRendererDevoluciones()); // Estado
-        tablaDevoluciones.getColumnModel().getColumn(6).setCellRenderer(new TableRendererDevoluciones()); // placeholder
-        tablaDevoluciones.getColumnModel().getColumn(6).setCellEditor(new TableEditorDevoluciones()); // 👈 Editor con botón funcional
+        tablaDevoluciones.getColumnModel().getColumn(6).setCellRenderer(new ButtonRenderer()); // 👈 renderiza el botón visible
+        tablaDevoluciones.getColumnModel().getColumn(6).setCellEditor(new TableEditorDevoluciones());   // 👈 maneja el clic
 
         JScrollPane scroll = new JScrollPane(tablaDevoluciones);
         scroll.setBorder(BorderFactory.createCompoundBorder(
