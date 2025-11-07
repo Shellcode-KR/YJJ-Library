@@ -6,6 +6,7 @@ package com.yjj.library.view;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTMaterialLighterIJTheme;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Image;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 /**
@@ -31,6 +33,8 @@ public class DashBoard extends javax.swing.JFrame {
         initComponents();
         initStyles();
         SetDateTitle();
+        showPanel(new InicioView());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     /**
@@ -53,12 +57,11 @@ public class DashBoard extends javax.swing.JFrame {
         btnReportes = new javax.swing.JButton();
         btnUsuarios = new javax.swing.JButton();
         header = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
-        subtitulo = new javax.swing.JLabel();
         titulofecha = new javax.swing.JLabel();
         body = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1300, 800));
 
         menu.setBackground(new java.awt.Color(43, 77, 153));
         menu.setPreferredSize(new java.awt.Dimension(270, 640));
@@ -191,9 +194,9 @@ public class DashBoard extends javax.swing.JFrame {
                 .addComponent(titulomenu)
                 .addGap(64, 64, 64)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,10 +211,6 @@ public class DashBoard extends javax.swing.JFrame {
 
         header.setPreferredSize(new java.awt.Dimension(750, 150));
 
-        titulo.setText("Subtitulo");
-
-        subtitulo.setText("Titulo 1");
-
         titulofecha.setText("jLabel1");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
@@ -219,37 +218,19 @@ public class DashBoard extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(headerLayout.createSequentialGroup()
-                        .addComponent(subtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(titulofecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(599, 599, 599)
+                .addComponent(titulofecha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subtitulo)
-                    .addComponent(titulofecha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addComponent(titulofecha)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
-        body.setLayout(bodyLayout);
-        bodyLayout.setHorizontalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        bodyLayout.setVerticalGroup(
-            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 478, Short.MAX_VALUE)
-        );
+        body.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -267,8 +248,8 @@ public class DashBoard extends javax.swing.JFrame {
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(backgroundLayout.createSequentialGroup()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -289,6 +270,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
         // TODO add your handling code here:
+        showPanel(new UsuariosView());
     }//GEN-LAST:event_btnUsuariosActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
@@ -309,6 +291,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         // TODO add your handling code here:
+        showPanel(new InicioView());
     }//GEN-LAST:event_btnInicioActionPerformed
 
     /**
@@ -335,16 +318,13 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JPanel header;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel menu;
-    private javax.swing.JLabel subtitulo;
-    private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulofecha;
     private javax.swing.JLabel titulomenu;
     // End of variables declaration//GEN-END:variables
 
     private void initStyles() {
 
-        titulo.putClientProperty("FlatLaf.styleClass", "h3");
-        subtitulo.putClientProperty("FlatLaf.styleClass", "h1");
+        
 
         titulomenu.putClientProperty("FlatLaf.styleClass", "h3");
         btnInicio.putClientProperty("FlatLaf.styleClass", "h3");
@@ -376,6 +356,16 @@ public class DashBoard extends javax.swing.JFrame {
         String fecha = now.format(formatter);
         titulofecha.setText(Character.toUpperCase(fecha.charAt(0)) + fecha.substring(1));
 
+    }
+
+    private void showPanel(JPanel panel) {
+        panel.setSize(body.getWidth(), body.getHeight());
+        panel.setLocation(0, 0);
+
+        body.removeAll();
+        body.add(panel, BorderLayout.CENTER);
+        body.revalidate();
+        body.repaint();
     }
 
 }
